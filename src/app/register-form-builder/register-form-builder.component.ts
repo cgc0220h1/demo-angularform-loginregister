@@ -41,7 +41,7 @@ export class RegisterFormBuilderComponent implements OnInit {
   onSubmit(): void {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
-      console.log('submitted');
+      alert('registration success!, Your Register Info is: ' + this.registerForm.value);
     }
   }
 }
