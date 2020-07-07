@@ -2,8 +2,8 @@
 <button (click)="showRegisterForm()">Register</button>
 <button (click)="showRegisterFormBuilder()">Register Builder</button>
 <div class="container" *ngIf="loginForm">
-  <app-template-driven-form>
-  </app-template-driven-form>
+  <app-login-builder>
+  </app-login-builder>
 </div>
 <div class="container" *ngIf="registerForm">
   <app-register>

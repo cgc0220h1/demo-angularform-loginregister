@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CustomValidatorService} from '../services/custom-validator.service';
 
 @Component({
   selector: 'app-login-builder',
@@ -8,17 +7,22 @@ import {CustomValidatorService} from '../services/custom-validator.service';
   styleUrls: ['./login-builder.component.css']
 })
 export class LoginBuilderComponent implements OnInit {
-  registerForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder,
-              private validator: CustomValidatorService) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      email: ['', [Validators.email]],
-      password: ['', [Validators.minLength(6)]]
-    }, {validators: [Validators.required]});
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.minLength(6), Validators.required]]
+    });
   }
 
+  onSubmit(): void {
+    this.loginForm.markAllAsTouched();
+    if (this.loginForm.valid) {
+      alert('welcome to the site!');
+    }
+  }
 }
