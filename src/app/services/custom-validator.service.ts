@@ -18,7 +18,7 @@ export class CustomValidatorService {
 
   validateAge(c: AbstractControl): ValidationErrors | null {
     const v = c.value;
-    return (Number(v.age) > 18) ? null : {
+    return (Number(v.age) > 18 || v.age === '') ? null : {
       ageNotValid: true
     };
   }

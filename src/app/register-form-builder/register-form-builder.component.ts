@@ -22,9 +22,9 @@ export class RegisterFormBuilderComponent implements OnInit {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       pwGroup: this.fb.group({
-        password: '',
+        password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ''
-      }, {validators: [this.validator.comparePassword, Validators.requiredTrue]}),
+      }, {validators: [this.validator.comparePassword]}),
       country: ['', [Validators.required]],
       age: ['', [Validators.required]],
       gender: ['', [Validators.required]],
@@ -39,9 +39,9 @@ export class RegisterFormBuilderComponent implements OnInit {
   }
 
   onSubmit(): void {
-      this.registerForm.markAllAsTouched();
-      if (this.registerForm.valid) {
-        console.log('submitted');
-      }
+    this.registerForm.markAllAsTouched();
+    if (this.registerForm.valid) {
+      console.log('submitted');
+    }
   }
 }
